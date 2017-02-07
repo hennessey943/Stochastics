@@ -1,0 +1,348 @@
+
+\documentclass[12pt]{article}
+
+\usepackage{graphics}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[table]{xcolor}
+
+
+
+%\usepackage[active]{srcltx} % SRC Specials for DVI Searching
+
+% Over-full v-boxes on even pages are due to the \v{c} in author's name
+\vfuzz2pt % Don't report over-full v-boxes if over-edge is small
+
+% THEOREM Environments ---------------------------------------------------
+
+ \newtheorem{thm}{Theorem}[section]
+ \newtheorem{cor}[thm]{Corollary}
+ \newtheorem{lem}[thm]{Lemma}
+ \newtheorem{prop}[thm]{Proposition}
+ %\theoremstyle{definition}
+ \newtheorem{defn}[thm]{Definition}
+ %\theoremstyle{remark}
+ \newtheorem{rem}[thm]{Remark}
+ \numberwithin{equation}{section}
+% MATH -------------------------------------------------------------------
+ \DeclareMathOperator{\RE}{Re}
+ \DeclareMathOperator{\IM}{Im}
+ \DeclareMathOperator{\ess}{ess}
+ \newcommand{\eps}{\varepsilon}
+ \newcommand{\To}{\longrightarrow}
+ \newcommand{\h}{\mathcal{H}}
+ \newcommand{\s}{\mathcal{S}}
+ \newcommand{\A}{\mathcal{A}}
+ \newcommand{\J}{\mathcal{J}}
+ \newcommand{\M}{\mathcal{M}}
+ \newcommand{\W}{\mathcal{W}}
+ \newcommand{\X}{\mathcal{X}}
+ \newcommand{\BOP}{\mathbf{B}}
+ \newcommand{\BH}{\mathbf{B}(\mathcal{H})}
+ \newcommand{\KH}{\mathcal{K}(\mathcal{H})}
+ \newcommand{\Real}{\mathbb{R}}
+ \newcommand{\Complex}{\mathbb{C}}
+ \newcommand{\Field}{\mathbb{F}}
+ \newcommand{\RPlus}{\Real^{+}}
+ \newcommand{\Polar}{\mathcal{P}_{\s}}
+ \newcommand{\Poly}{\mathcal{P}(E)}
+ \newcommand{\EssD}{\mathcal{D}}
+ \newcommand{\Lom}{\mathcal{L}}
+ \newcommand{\States}{\mathcal{T}}
+ \newcommand{\abs}[1]{\left\vert#1\right\vert}
+ \newcommand{\set}[1]{\left\{#1\right\}}
+ \newcommand{\seq}[1]{\left<#1\right>}
+ \newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+ \newcommand{\essnorm}[1]{\norm{#1}_{\ess}}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{CSTFile=LaTeX article (bright).cst}
+%TCIDATA{Created=Fri Nov 02 10:44:42 2001}
+%TCIDATA{LastRevised=Mon Dec 10 11:56:49 2001}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="General\Blank Document">}
+%TCIDATA{Language=American English}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgment}[theorem]{Acknowledgment}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{solution}[theorem]{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+\renewcommand\refname{}
+\renewcommand\thefootnote{}
+\textheight=9in \topmargin=-0.6in \everymath{\displaystyle}
+\textwidth=6.5in \oddsidemargin=0.05in
+\renewcommand\arraystretch{1.5}
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+\includeonly{}
+\usepackage{yfonts}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{eucal}
+\everymath{\displaystyle}
+\begin{document}
+
+
+\begin{center}
+{\bf Stochastic Processes and Modeling
+/\bigskip}
+
+Discrete Time Dynamical System and Probability Theory
+
+Office Hours: MTuTh 5-6pm
+
+8/31/15
+
+\end{center}
+\vspace{0.2 in}
+
+
+In terms of abstract mathematics, a stochastic process is a random function that maps a parameter domain into a state space.\\
+
+Random: The value of the mathematical object depends not only on the explicit variables but also on some uncertain influence.
+
+Parameter Domain: The set describing the explicit independent variable of the stochastic process, usually time, but can be space.
+
+State Space: Range of the random variable(s) of interest.
+
+Stochastic Process $X(t)$ or $X_t$ where $t\in T$ (parameter domain) and $X\in S$ (state space)
+
+The most basic classification of stochastic processes is in terms of the nature of their parameter domains and state space.
+
+Discrete: finite or countably infinite, typical examples are finite sets like $\mathbb(Z)_m=(1,2,...,m)$, $\mathbb(Z)_m^k=(1,2,...,m)\times(1,2,...,m)\times ...\times(1,2,...,m)$ or countably infinite sets like $\mathbb(Z)_{\geq 0}=(0,1,2,3,...)$, $\mathbb(Z)^k_{\geq 0}=(0,1,2,...)\times(0,1,2,...)\times ...\times(0,1,2,...)$ or modifications like $.25\times\mathbb(Z)_{\geq 0}=(0,.25,.5,.75,...)$.
+
+Continuous: uncountable; typically continuous subsets of $\mathbb(R)^d$ or $\mathbb(C)^d$.
+
+This class will only consider discrete state spaces.\\
+
+As for the parameter domain, we will focus only on one-dimensional parameter domains with the independent variable typically being time. (could also, in principal, apply to one-dimensional space). Multi-dimensional spatial random fields(turbulent): require different stochastic frameworks, the theory of random fields see Yaglorn, Correlation Theory of Stationary Random Functions
+
+We will consider both discrete and continuous one-dimensional parameter domains, starting with discrete parameter domain.
+
+See figure in class notes uploaded by Kramer
+
+\pagebreak
+
+9/3/15\\
+\\
+Read Karlin and Taylor 1.1-1.3 for Monday, HW 1 posted soon, due Thursday October 1st at 5 pm\\
+\\
+Check out Bertsekas \& Tsitsiklis, Introduction to Probability and Ross, A First Course in Probability
+Probability theory was only properly mathematicized in the 1930s by Kolmogorov using measure theory. This movement separated mathematics from philosophy/intuition. Measure theory is a subject in real analysis which is concerned with mathematical structures that map sets into numbers. The upshot of the measure theoretic development is that a mathematically well-defined probability model consists of three ingredients:
+
+1. A sample space $\Omega$ (note that this is not the state space of a r.v.) - This is an abstract space that encodes all possible outcomes of the components of the system of which we are uncertain, and which are relevant to the questions of interest. It's the "universe of possibilities." For example, suppose we want to consider the number of migrants entering the Budapest train station over the next month. Then the sample space might look something like this: Every point $\omega\in\Omega$ (called an elementary event) has the following information: \# of migrants of migrants leaving Syria on day $n\in[1,30]$ and the weather in Balkans for each day $n$, then for each migrant, their intended destination and whether they successfully pass a milestone on their journey to Europe.\\
+Thus, $\Omega$ is the space of all possible values of this data. \\
+\\
+2. $\sigma -algebra$ $\textgoth{F}$ of "measurable sets" or "events" - For the case of discrete sample spaces (which will apply for most of the class), we can just take \textgoth{F} to be the set of all subsets $2^\Omega$. In more complex settings (particularly with continuous spaces), one must pay more attention to this object for two reasons: (1) technical mathematics; for continuous sample spaces, it is not possible to "measure" every possible subset in a satisfying way and (2)encoding information flow, particularly in finance.\\
+A $\sigma-algebra$ is a mathematical structure that has the property that it is closed under the operations of finite unions, countable unions, finite intersection, countable intersections, and complements.
+\\
+3. Probability measure: $P:\textgoth{F}\to[0,1]$ with the following axioms:
+\begin{itemize}
+    \item $P(A)\in[0,1]$ for any $A\in\textgoth{F}$
+    \item $P(\Omega)=1$
+    \item The probability measure is finitely and countably additive, meaning that given any collection $\{A_i\}_{i\in I}\subseteq \textgoth{F}$ where $I$ is a finite or countable index set which has the property of being disjoint or mutually exclusive ($A_i\cap A_j=0\text{  for } i\neq j$). Then $P(\cup_{i\in I}A_i)=\sum_{i\in I}P(A_i)$. In words: Probability that $A_1$ or $A_2$ or $A_3$\ldots will happen.
+\end{itemize}
+
+Any choice of these three objects consisten with the above constraints gives a probability space or probability model: $(\Omega,\textgoth{F},P$). All the modeling goes into how these mathematical structures are chosen to represent a given system. Once this probability model is specified, then the calculations regarding the properties of the model can be put on mathematically rigorous and unequivocal foundations.\\
+
+How does the modeling step (setting up the probability model) work in practice?
+\begin{itemize}
+    \item sample space: define the relevant uncertain inputs and parameters
+    \item $\sigma-algebra$: almost always implicitly taken to be the richest possible
+    \item Probability measure: implicitly defined by giving a sufficiently detailed model to calculate any desired probability.
+\end{itemize}
+
+From the axioms of probability theory, one can deduce some fundamental relations:
+\begin{itemize}
+    \item $P(\emptyset)=0$
+    \item $P(A^c)=1-P(A)$
+    \item $P(A_1\cup A_2)=P(A_1)+P(A_2)-P(A_1\cap A_2)$
+    \item Given $P(A_1),P(A_2)$ there is no general way to determine $P(A_1\cap A_2)$
+\end{itemize}
+
+To make progress in computing intersections or unions, we need to develop a mechanism that describes the relationship between two events:
+\begin{definition} Conditional Probability\\
+For any events $A,B\in\textgoth{F}$ we define the conditional probability of event $A$ given event $B$ as follows:
+$$P(A|B)=\frac{P(A\cap B)}{P(B)}\text{ provided }P(B)>0$$
+\end{definition}
+
+A very useful fundamental relationship between conditional probabilities is given by Bayes' rule:
+$$P(B|A)=\frac{P(A|B)P(B)}{P(A)}$$
+
+\pagebreak
+
+9/10/15\\
+
+\textbf{Law of Total Probability} - Let $\{B_j\}_{j=1}^m$ be a partition of the sample space, meaning that:
+\begin{itemize}
+\item $B_j\cap B_{j'}=\emptyset$
+\item $\cup_{j=1}^mB_j=\Omega$
+\end{itemize}
+(intuitively, a chunking of sample space into an exhaustive set of mutually exclusive cases)
+$$P(A)=\sum_{j=1}^mP(A|B_j)P(B_j)$$
+This is very useful in simplifying calculations of probabilities of complex events $A$ by introducing partial information $B_j$. The law of total probability also remains valid if the number of elements in the partition is infinite (but countable). \\
+
+\textbf{Independence}\\
+A collection of events $\{A_i\}_{i\in I}$ is said to be independent provided that for any finite subcollection indexed by a finite subset $J\subseteq I$, we have:
+$$P(\cap_{j\in J}A_j)=\prod_{j\in J}P(A_j)$$
+In particular, two events $A_1$ and $A_2$ are said to be independent provided that:
+$$P(A_1\cap A_2)=P(A_1)P(A_2)$$
+The more intuitive way to understand why this mathematical definition makes sense is to observe the following relations are equivalent:
+$$P(A|B)=P(A)\iff \frac{P(A\cap B)}{P(B)}=P(A)\iff P(A\cap B)=P(A)P(B)\iff P(B|A)=P(B)$$
+
+\textbf{Random Variables}\\
+Intuitively a random variable is an uncertain number or collection of numbers. Mathematically, a random variable is a measurable mapping from sample space into a \emph{state space}. $X:\Omega\to S_X$.\\
+ \textbf{State space} $S_X$ of a random variable $X$ gives a collection of possible values of the random variable $X$. (It's OK if it's bigger than the actual range of $X$).
+ \begin{example} $X$ is the number of migrants that arrive on day 3. Then $S_X\in\mathbb{Z}^+$. Notice that state spaces tend to be low-dimensional subspcaes of $\mathbb{R}^d$ or $\mathbb{Z}^d$. For example, in this model, we could also take a random variable $\hat{X}=(X_1,X_2,...,X_{30})$ corresponding to the number of migrants that arrive each day $n=1,...,30$. Random variables are essentially lower-dimensional projections of the randomness in the full probability model, which are more manageable to work and compute with.
+ \end{example}
+ How does one compute properties of random variables from the underlying probability model?\\
+ First, there is a technical restriction on random variables that will not concern us, namely we always demand that if $B\subseteq S_X$ is a reasonable (Borel) subset, then $X^{-1}(B)\in\textgoth{F}$. The uncertainty about the random variable can be described by a \textbf{probability distribution} which is the push-forward of the probability measure on sample space to the state space $S_X$ via the mapping $X$. For any reasonable (Borel) subset $B\subseteq S_X$ we define the probability distribution of $X$ as the measure:
+ $$P_X(B)\equiv P(X\in B)=P(X(\omega)\in B)=P(\omega\in X^{-1}(B))=P(X^{-1}(B))$$
+ Probability distribution $P_X$ is still a measure, which can be somewhat awkward for computations. It is desirable to reformulate in terms of functions.
+ \begin{itemize}
+ \item For finite-dimensional state spaces, one can always associate a cumulative distribution function (CDF, $P(X\leq x)$) to a probability measure, but this becomes still somewhat awkward to work with in more than one dimension.
+ \item For practical calculations, it's often easier to use special-purpose frameworks if the random variables satisfy certain nice properties:
+    \begin{enumerate}
+    \item Discrete
+    \item Absolutely Continuous
+    \end{enumerate}
+ \end{itemize}
+ First we'll talk about random variables that have discrete (finite or countably infinite) state space $S_X$. All subsets of $S_X$ can be considered reasonable (Borel), and we can relate the probability distribution of $X$ in terms of probabilities of elementary outcomes:
+ \begin{itemize}
+ \item $p_x=P_X(x)=P(X=x)$
+ \end{itemize}
+
+ By countable additivity,
+ $$P_X(B)=\sum_{x\in B}p_x$$
+ We must naturally have: $p\geq 0,\sum_{x\in S_X}p_x=1$ Therefore, the probability measure has been related to a simple function $p_x$ on the state space $S_X$. This function is known as the \textbf{probability mass function} (PMF). \\
+
+ Examples of discrete random variables associated to the migration model:
+ \begin{itemize}
+ \item the number of migrants arriving on a given day ($S_X=\mathbb{Z}^+$)
+ \item characterizing the weather in the Balkans on a given day by a finite set of qualitative descriptors (1=fair, 2=difficult, 3=dangerous)
+ \end{itemize}
+
+A probability mass function is completely informative about a discrete random variable. There are various sumary descriptors that are simpler partial representation of the uncertainty.
+\begin{itemize}
+\item Mean or expected value or expectation of a random variable
+    $$X:\mu_X=\mathbb{E}X=<X>=\sum_{x\in S_X}xp_x$$
+\item To characterize the uncertainty about the random variable, the simplest summary descriptor is the variance, or standard deviation (root mean square distance). Standard deviation $\sigma_X$, variance: $\sigma_X^2$
+$$Var(X)=\sigma_X^2=\mathbb{E}((X-\mathbb{E}X)^2)=\sum_{x\in S_X}(x-\mu_X)^2p_x$$
+\end{itemize}
+
+In a practical sense, one can think roughly that a random variable with mean $\mu_X$ and standard deviation $\sigma_X$ is quite likely to take values in the interval $(\mu_X-\sigma_X,\mu_X+\sigma_X)$. But notice that the mean and standard deviation do not completely specify the full probability distribution.\\
+
+Some specific probability distributions on state spaces appear frequently in models; we will present some of these important distributions.
+\begin{enumerate}
+    \item \textbf{Uniform Distribution} on a finite state space $\{1,2,...,M\}$
+    \begin{itemize}
+        \item $p_x=\frac{1}{M}$ for all $x\in \{1,...,M\}$
+    \end{itemize}
+    \item \textbf{Poisson Distribution} on the state space $\mathbb{Z}^+$
+        \begin{itemize}
+        \item $p_x=\frac{e^{-\mu}\mu^{-x}}{x!}$ for $x\in\mathbb{Z}^+$
+        \item described by a single real parameter $\mu\geq 0$, in fact $\mu=<X>$
+        \item Poisson distribution arises in many probabilistic and stochastic models because of the \textbf{Poisson limit theorem}
+            \begin{itemize}
+            \item If one is quantifying the total number of occurrences of some incident over some time interval, and if the incidents themselves can be represented/modeled as a sum of a large number of independent, rarely occurring incidents, then the total number of incidents will be approximately Poisson.
+            \item common to model the number of incoming agents to a node when the rareness/independence assumptions are good (cars entering an expressway, demand arriving at a server, signal arriving at a neuron)
+            \end{itemize}
+        \end{itemize}
+    \item \textbf{Geometric Distribution}
+    $$p_x=p(1-p)^x \text{  for  }x\in S_X=\mathbb{Z}^+$$
+    with $0<p<1$. Geometric distribution is a good model for the number of failures that occur before a success if the probability for success in each trial is $p$ and if each trial is independent. - Memoryless property...
+\end{enumerate}
+
+\pagebreak
+
+9/14/2015\\
+
+\textbf{Mathematical Framework for Stochastic Processes\\
+Reading:
+\begin{itemize}
+\item Karlin and Taylor Sec. 1.1-1.3
+\end{itemize}}
+
+\textbf{Homework 1 due Friday, October 2 at 5PM\\
+Continuous random variables}\\
+Probability mass functions don't work well because typically the probability for a random variable with a continuous state space to take any particular value is just $P(x=x)=0$. So we must come up with an alternative way to represent probability distributions for continuous random variables. For an important class of continuous random variables, namely the "absolutely continuous" random variables, one can define a \textbf{probability density function (pdf)} $p_X(x)$ which has the property that for any reasonable (Borel) subset $B\subset S_X$:
+$$p(X\in B)=\int_R p_X(x)dx$$
+PDFs always have the following properties:
+\begin{itemize}
+\item $p_X(x)\geq0$
+\item $\int_{S_X}p_X(x)dx=1$
+\end{itemize}
+
+But PDFS are not probabilities, so they don't have to sum up to 1, nor must it be the case that $p_X(x)\leq 1$. Any PDF with the above true properties (and not pathological properties) will give rise to a valid absolutely continuous random variable.\\
+
+What kind of continuous random variables are not absolutely continuous?
+\begin{itemize}
+\item "singular continuous": rarely occur in practice
+\end{itemize}
+
+If a PDF doesn't describe a probability, then what is it? It describes a density of probability, just as in continuum mechanics, mass densities describe densities of mass. That is, if $p_X(x)$ is continuous at point $x_0$ (which it doesn't need to be), then one can use the MVT to show that:
+$$\lim_{\epsilon\to 0}\frac{P(|X-x_0|<\epsilon)}{2\epsilon}=\lim_{\epsilon\to 0}\frac{\int_{x_0-\epsilon}^{x_0+\epsilon}p_X(x)dx}{2\epsilon}=p_X(x_0)$$
+The formulas for expectation also involve integrals:
+$$\mathbb{E}X=\int_{S_X} xp_X(x)dx$$
+
+Important examples
+\begin{enumerate}
+\item Uniform Distribution
+    $$X\sim U(a,b)(\text{uniformly distributed on the interval }(a,b))$$
+    We can take $S_X=\mathbb{R}$ or any subset of $\mathbb{R}$ that contains the interval $(a,b)$. Specify the PDF:
+    $$p_X(x)=\left\{\begin{array}{cc}\frac{1}{b-a} & a<x<b\\0&x<a,x>b\end{array}\right.$$
+    One can calculate that:
+    $$\mathbb{E}X=\int_{S_X}xp_X(x)dx=\int_a^b\frac{x}{b-a}dx=\frac{a+b}{2}$$
+    The primary use of the uniform distribution in this class is that random number generators are typically built up from an algorithm that generates a $U(0,1)$ random variable.
+\item Exponential Distribution
+    $$S_X=\mathbb{R}(\text{ or }\mathbb{R}_+$$
+    $$p_X(x)=\left\{\begin{array}{cc}\frac{1}{\mu}e^{-\frac{x}{\mu}}&x>0\\0&x\leq 0\end{array}\right.$$
+    One parameter $\mu$ which turns out to be equal to the mean of the random variable:
+    $$\mathbb{E}X=\int_{S_X}xp_X(x)dx=\int_0^\infty \frac{x}{\mu}e^{-\frac{x}{\mu}}dx=\mu$$
+    The exponential distribution has the important property of being memoryless when interpreted as a model for a time delay. Mathematically, it has the property that for $0<s<t$:
+    $$P(T>t|T>s)=P(T>t-s)\text{ if }T\sim Exp(\mu)$$
+    Interpretation: Think of $T$ as the time required to wait until some incident occurs. Then if we have waited a time $s$ without incident, then we know $T>s$. Then the probability that the incident still has not occured at a later time $t$ is the same as just recomputing probabilities by starting over from the last observed time $s$. Exponentially distributed random v ariables will arise naturally in stochastic processes where the time to wait for an incident does not depend on the past. It turns out that, up to weird pathological examples,
+    \begin{itemize}
+    \item exponential distribution is the only continuous random variable that has the memoryless property
+    \item geometric distribution is the only discrete random variables that has the memoryless property
+    \end{itemize}
+      
+\end{enumerate}
+\pagebreak
+
+\textbf{Stochastic Process Theory}
+A stochastic process is a mapping:
+$$X:\Omega\times T\to S_X$$
+where as before:
+\begin{itemize}
+\item $\Omega$ is the sample space (of uncertain possibilities)
+\item $S_X$ is the state space
+\item $T$ is the parameter domain, typically time
+\end{itemize}
+
+\end{document}
+
